@@ -2,11 +2,8 @@
 
 namespace CL_Project
 {
-    internal class Movies
+    public class Movies
     {
-        internal static void Add(string input)
-        {
-            throw new NotImplementedException();
-        }
+        public string Title { get; set; }
     }
 }
