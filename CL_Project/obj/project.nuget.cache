@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "J9V0c1IE8VhO8jLsAFHzgJGtOh5iysXWRqgYFqoMNLKByhspcz/9bg46mpLxMdUfbCFQfZFm7X+i5/5lxNYwGg==",
+  "success": true,
+  "projectFilePath": "/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/CL_Project.csproj",
+  "expectedPackageFiles": [
+    "/Users/cathamm/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

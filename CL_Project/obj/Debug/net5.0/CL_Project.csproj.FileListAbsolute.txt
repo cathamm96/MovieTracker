@@ -1,0 +1,17 @@
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/obj/Debug/net5.0/CL_Project.csproj.AssemblyReference.cache
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/obj/Debug/net5.0/CL_Project.GeneratedMSBuildEditorConfig.editorconfig
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/obj/Debug/net5.0/CL_Project.AssemblyInfoInputs.cache
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/obj/Debug/net5.0/CL_Project.AssemblyInfo.cs
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/obj/Debug/net5.0/CL_Project.csproj.CoreCompileInputs.cache
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/bin/Debug/net5.0/CL_Project.deps.json
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/bin/Debug/net5.0/CL_Project.runtimeconfig.json
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/bin/Debug/net5.0/CL_Project.runtimeconfig.dev.json
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/bin/Debug/net5.0/CL_Project.dll
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/bin/Debug/net5.0/ref/CL_Project.dll
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/bin/Debug/net5.0/CL_Project.pdb
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/bin/Debug/net5.0/Newtonsoft.Json.dll
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/obj/Debug/net5.0/CL_Project.csproj.CopyComplete
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/obj/Debug/net5.0/CL_Project.dll
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/obj/Debug/net5.0/ref/CL_Project.dll
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/obj/Debug/net5.0/CL_Project.pdb
+/Users/cathamm/Documents/code louisville/SD Project/CL_Project/CL_Project/obj/Debug/net5.0/CL_Project.genruntimeconfig.cache
