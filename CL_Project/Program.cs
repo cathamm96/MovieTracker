@@ -41,10 +41,6 @@ namespace CL_Project
                         repeat = false;
                         break;
                 }
-                //if (repeat == false) break;
-                //Console.WriteLine("Would You Like To Continue? Y/N");
-                //var result = Console.ReadLine().ToUpper();
-                //repeat = result == "Y" ? true : false; 
             }
         }
 
@@ -77,7 +73,8 @@ namespace CL_Project
             return selection;
         }
 
-        //Writing to json
+
+        //Writing to Json
         public static class JsonFileUtils
         {
             private static readonly JsonSerializerOptions _options =
@@ -89,10 +86,11 @@ namespace CL_Project
                 {
                     WriteIndented = true
                 };
-                var jsonString = JsonSerializer.Serialize(obj, options);
+                string jsonString = JsonSerializer.Serialize(obj, options);
                 File.WriteAllText(fileName, jsonString);
             }
         }
+
 
         //Option 1: Add Film To Watch List
         static void RunAddFilmWatch()
@@ -108,46 +106,43 @@ namespace CL_Project
             JsonFileUtils.JsonWrite(newmovie, fileName);
         }
 
+
         //Option 2: Remove Film From Watch List
         static void RunRemoveFilmWatch()
         {
             Console.WriteLine("What Movie Do You Want To Remove From Your Watch List?");
-
-            string input = Console.ReadLine();
-            List<string> newmovies = new List<string>();
-
-            newmovies.Remove(input);
-
-            string jsonString = JsonSerializer.Serialize(newmovies);
         }
+
 
         //Option 3: View Watch List
-        static void RunViewFilmWatch()
+        static string RunViewFilmWatch()
         {
-            //Console.WriteLine("Here Are The Movies You Want To Watch!");
+            Console.WriteLine("Here is Your Watch List!");
 
-            //List<string> WatchList = JsonSerializer.Deserialize<List<string>>(File.ReadAllText(jsonString);
+            string fileName = "WatchList.json";
 
-            //foreach (var movies in WatchList)
-            //{
-            //    Console.WriteLine(movies);
-            //}
+            string jsonContents = File.ReadAllText(fileName);
+
+            string jsonString = JsonSerializer.Deserialize<Movies>(jsonContents);
+
+            return jsonString;
         }
+
 
         //Option 4: Add Film To Completed List
         static void RunAddFilmCompleted()
         {
             Console.WriteLine("What Movie Did You Watch?");
 
-            string input = Console.ReadLine();
-            List<string> watchedmovies = new List<string>();
+            Movies completemovie = new();
 
-            watchedmovies.Add(input);
+            completemovie.Title = Console.ReadLine().ToString();
 
-            string jsonString = JsonSerializer.Serialize(watchedmovies);
-
-            List<string> CompleteList = JsonSerializer.Deserialize<List<string>>(jsonString);
+            var fileName = "CompletedList.json";
+         
+            JsonFileUtils.JsonWrite(completemovie, fileName);
         }
+
 
         //Option 5: View Completed List
         static void RunViewCompleted()
@@ -155,37 +150,12 @@ namespace CL_Project
             Console.WriteLine("Here Are The Movies You've Watched!");
         }
 
+
         //Option 6: What Movie To Watch
         static void RunWhatToWatch()
         {
             Console.WriteLine("This Is What You Should Watch!");
         }
-
-        ////Watch List 
-        //public class WatchList
-        //{
-        //    public string saveFile;
-        //    public readonly List<WatchList> movies;
-
-        //    public WatchList(string saveFilePath)
-        //    {
-        //        saveFile = saveFilePath;
-        //        movies = FileUtility.ReadJsonFile<List<WatchList>>(saveFile);
-        //    }
-        //}
-
-        ////Complete List
-        //public class CompleteList
-        //{
-        //    private readonly string saveFile;
-        //    private readonly List<CompleteList> watchedmovies;
-
-        //    public CompleteList(string saveFilePath)
-        //    {
-        //        saveFile = saveFilePath;
-        //        watchedmovies = FileUtility.ReadJsonFile<List<CompleteList>>(saveFile);
-        //    }
-        //}
 
     }
 }
