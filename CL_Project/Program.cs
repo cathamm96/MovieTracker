@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -56,7 +57,7 @@ namespace CL_Project
                         repeat = true;
                         Console.Clear();
                         Console.WriteLine("Here Is A Movie To Watch!");
-                        RunWhatToWatch();
+                        WhatToWatch(0, 101);
                         break;
                     case "7":
                         repeat = false;
@@ -134,10 +135,11 @@ namespace CL_Project
         }
 
 
-        //Option What Movie To Watch
-        static void RunWhatToWatch()
+        //Option Select From List
+        static int WhatToWatch(int min, int max)
         {
-            Console.WriteLine("This Is What You Should Watch!");
+            Random random = new();
+            return random.Next(min, max);
         }
 
     }
