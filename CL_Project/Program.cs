@@ -12,6 +12,9 @@ namespace CL_Project
         {
             bool repeat = true;
 
+            string watchList = "WatchList.json";
+            string completeList = "CompletedList.json";
+
             while (repeat == true)
 
             {
@@ -20,21 +23,39 @@ namespace CL_Project
                 switch (selection)
                 {
                     case "1":
-                        RunAddFilmWatch();
+                        repeat = true;
+                        Console.Clear();
+                        Console.WriteLine("What Movie Do You Want To Add To Your Watch List?");
+                        AddFilm(watchList);
                         break;
                     case "2":
-                        RunRemoveFilmWatch();
+                        repeat = true;
+                        Console.Clear();
+                        Console.WriteLine("What Movie Do You Want To Remove From Your Watch List?");
+                        RemoveFilm(watchList);
                         break;
                     case "3":
-                        RunViewFilmWatch();
+                        repeat = true;
+                        Console.Clear();
+                        Console.WriteLine("Here is Your Watch List!");
+                        ViewFilm(watchList);
                         break;
                     case "4":
-                        RunAddFilmCompleted();
+                        repeat = true;
+                        Console.Clear();
+                        Console.WriteLine("What Movie Do You Want To Add To Your Completed List?");
+                        AddFilm(completeList);
                         break;
                     case "5":
-                        RunViewCompleted();
+                        repeat = true;
+                        Console.Clear();
+                        Console.WriteLine("Here is Your Completed List!");
+                        ViewFilm(completeList);
                         break;
                     case "6":
+                        repeat = true;
+                        Console.Clear();
+                        Console.WriteLine("Here Is A Movie To Watch!");
                         RunWhatToWatch();
                         break;
                     case "7":
@@ -68,90 +89,52 @@ namespace CL_Project
                 Console.WriteLine(kvp.Key + " " + kvp.Value);
             }
 
-            string selection = Convert.ToString(Console.ReadLine());
+            string selection = Console.ReadKey().KeyChar.ToString();
 
             return selection;
         }
 
 
-        //Writing to Json
-        public static class JsonFileUtils
+        //Option Add To List
+        static void AddFilm(string filename)
         {
-            private static readonly JsonSerializerOptions _options =
-                new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
+            string title = Console.ReadLine().ToString();
 
-            public static void JsonWrite(object obj, string fileName)
+            FileIO.WriteJSON(filename, title);
+
+            Console.WriteLine("\n" + title + " Added To List! \nPress Any Key To Continue!");
+            Console.ReadKey();
+        }
+
+
+        //Option Remove From List
+        static void RemoveFilm(string filename)
+        {
+            string title = Console.ReadLine().ToString();
+
+            FileIO.RemoveJSON(filename, title);
+
+            Console.WriteLine("\n" + title + " Added To List! \nPress Any Key To Continue!");
+            Console.ReadKey();
+        }
+
+
+        //Option View List
+        static void ViewFilm(string filename)
+        {
+            List<string> movieList = FileIO.ReadJSON(filename);
+
+            foreach (string movie in movieList)
             {
-                var options = new JsonSerializerOptions(_options)
-                {
-                    WriteIndented = true
-                };
-                string jsonString = JsonSerializer.Serialize(obj, options);
-                File.WriteAllText(fileName, jsonString);
+                Console.WriteLine(movie);
             }
+
+            Console.WriteLine("\nPress Any Key To Continue!");
+            Console.ReadKey();
         }
 
 
-        //Option 1: Add Film To Watch List
-        static void RunAddFilmWatch()
-        {
-            Console.WriteLine("What Movie Do You Want To Add To Your Watch List?");
-
-            Movies newmovie = new();
-
-            newmovie.Title = Console.ReadLine().ToString();
-
-            var fileName = "WatchList.json";
-
-            JsonFileUtils.JsonWrite(newmovie, fileName);
-        }
-
-
-        //Option 2: Remove Film From Watch List
-        static void RunRemoveFilmWatch()
-        {
-            Console.WriteLine("What Movie Do You Want To Remove From Your Watch List?");
-        }
-
-
-        //Option 3: View Watch List
-        static string RunViewFilmWatch()
-        {
-            Console.WriteLine("Here is Your Watch List!");
-
-            string fileName = "WatchList.json";
-
-            string jsonContents = File.ReadAllText(fileName);
-
-            string jsonString = JsonSerializer.Deserialize<Movies>(jsonContents);
-
-            return jsonString;
-        }
-
-
-        //Option 4: Add Film To Completed List
-        static void RunAddFilmCompleted()
-        {
-            Console.WriteLine("What Movie Did You Watch?");
-
-            Movies completemovie = new();
-
-            completemovie.Title = Console.ReadLine().ToString();
-
-            var fileName = "CompletedList.json";
-         
-            JsonFileUtils.JsonWrite(completemovie, fileName);
-        }
-
-
-        //Option 5: View Completed List
-        static void RunViewCompleted()
-        {
-            Console.WriteLine("Here Are The Movies You've Watched!");
-        }
-
-
-        //Option 6: What Movie To Watch
+        //Option What Movie To Watch
         static void RunWhatToWatch()
         {
             Console.WriteLine("This Is What You Should Watch!");
