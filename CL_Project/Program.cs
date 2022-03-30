@@ -57,7 +57,7 @@ namespace CL_Project
                         repeat = true;
                         Console.Clear();
                         Console.WriteLine("Here Is A Movie To Watch!");
-                        WhatToWatch(0, 101);
+                        WhatToWatch(watchList);
                         break;
                     case "7":
                         repeat = false;
@@ -115,7 +115,7 @@ namespace CL_Project
 
             FileIO.RemoveJSON(filename, title);
 
-            Console.WriteLine("\n" + title + " Added To List! \nPress Any Key To Continue!");
+            Console.WriteLine("\n" + title + " Removed From List! \nPress Any Key To Continue!");
             Console.ReadKey();
         }
 
@@ -136,10 +136,17 @@ namespace CL_Project
 
 
         //Option Select From List
-        static int WhatToWatch(int min, int max)
+        static void WhatToWatch(string filename)
         {
-            Random random = new();
-            return random.Next(min, max);
+            List<string> movieList = FileIO.ReadJSON(filename);
+
+            Random r = new Random();
+
+            int rInt = r.Next(0, movieList.Count);
+
+            Console.WriteLine(movieList[rInt]);
+            Console.WriteLine("\nPress Any Key To Continue!");
+            Console.ReadKey();
         }
 
     }
