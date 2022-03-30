@@ -140,11 +140,20 @@ namespace CL_Project
         {
             List<string> movieList = FileIO.ReadJSON(filename);
 
-            Random r = new Random();
+            if (movieList.Count > 0)
+            {
+                Random r = new Random();
 
-            int rInt = r.Next(0, movieList.Count);
+                int rInt = r.Next(0, movieList.Count);
 
-            Console.WriteLine(movieList[rInt]);
+                Console.WriteLine(movieList[rInt]);
+            }
+
+            else
+            {
+                Console.WriteLine("There Are No Movies In Your Watch List!");
+            }
+
             Console.WriteLine("\nPress Any Key To Continue!");
             Console.ReadKey();
         }
