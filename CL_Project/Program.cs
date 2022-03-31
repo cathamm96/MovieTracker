@@ -74,7 +74,6 @@ namespace CL_Project
                         string movieName = Console.ReadLine();
                         GetMovieInfo.Main(movieName);
                         break;
-
                     case "9":
                         repeat = false;
                         break;
