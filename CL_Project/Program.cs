@@ -11,6 +11,8 @@ namespace CL_Project
     {
         static void Main()
         {
+            Movies movie = new Movies();
+
             bool repeat = true;
 
             string watchList = "WatchList.json";
@@ -27,37 +29,37 @@ namespace CL_Project
                         repeat = true;
                         Console.Clear();
                         Console.WriteLine("What Movie Do You Want To Add To Your Watch List?");
-                        AddFilm(watchList);
+                        movie.AddFilm(watchList);
                         break;
                     case "2":
                         repeat = true;
                         Console.Clear();
                         Console.WriteLine("What Movie Do You Want To Remove From Your Watch List?");
-                        RemoveFilm(watchList);
+                        movie.RemoveFilm(watchList);
                         break;
                     case "3":
                         repeat = true;
                         Console.Clear();
                         Console.WriteLine("Here is Your Watch List!");
-                        ViewFilm(watchList);
+                        movie.ViewFilm(watchList);
                         break;
                     case "4":
                         repeat = true;
                         Console.Clear();
                         Console.WriteLine("What Movie Do You Want To Add To Your Completed List?");
-                        AddFilm(completeList);
+                        movie.AddFilm(completeList);
                         break;
                     case "5":
                         repeat = true;
                         Console.Clear();
                         Console.WriteLine("Here is Your Completed List!");
-                        ViewFilm(completeList);
+                        movie.ViewFilm(completeList);
                         break;
                     case "6":
                         repeat = true;
                         Console.Clear();
                         Console.WriteLine("Here Is A Movie To Watch!");
-                        WhatToWatch(watchList);
+                        movie.WhatToWatch(watchList);
                         break;
                     case "7":
                         repeat = false;
@@ -94,69 +96,5 @@ namespace CL_Project
 
             return selection;
         }
-
-
-        //Option Add To List
-        static void AddFilm(string filename)
-        {
-            string title = Console.ReadLine().ToString();
-
-            FileIO.WriteJSON(filename, title);
-
-            Console.WriteLine("\n" + title + " Added To List! \nPress Any Key To Continue!");
-            Console.ReadKey();
-        }
-
-
-        //Option Remove From List
-        static void RemoveFilm(string filename)
-        {
-            string title = Console.ReadLine().ToString();
-
-            FileIO.RemoveJSON(filename, title);
-
-            Console.WriteLine("\n" + title + " Removed From List! \nPress Any Key To Continue!");
-            Console.ReadKey();
-        }
-
-
-        //Option View List
-        static void ViewFilm(string filename)
-        {
-            List<string> movieList = FileIO.ReadJSON(filename);
-
-            foreach (string movie in movieList)
-            {
-                Console.WriteLine(movie);
-            }
-
-            Console.WriteLine("\nPress Any Key To Continue!");
-            Console.ReadKey();
-        }
-
-
-        //Option Select From List
-        static void WhatToWatch(string filename)
-        {
-            List<string> movieList = FileIO.ReadJSON(filename);
-
-            if (movieList.Count > 0)
-            {
-                Random r = new Random();
-
-                int rInt = r.Next(0, movieList.Count);
-
-                Console.WriteLine(movieList[rInt]);
-            }
-
-            else
-            {
-                Console.WriteLine("There Are No Movies In Your Watch List!");
-            }
-
-            Console.WriteLine("\nPress Any Key To Continue!");
-            Console.ReadKey();
-        }
-
     }
 }
