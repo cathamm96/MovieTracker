@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace CL_Project
 {
@@ -13,36 +10,44 @@ namespace CL_Project
         //API Key: d6bfcd253942f1907271911a59cbbe44
         //API Request URL: https://api.themoviedb.org/3/movie/550?api_key=d6bfcd253942f1907271911a59cbbe44
 
-        public class Summary
+        public class MovieInfoResult
         {
-            [JsonPropertyName("tagline")]
-            public string Title { get; set; }
+            public string Tagline { get; set; }
+            public string Overview { get; set; }
+            public string Original_language { get; set; }
         }
 
-        public class Info
+        public MovieInfoResult[] Results { get; set; }
+    }
+
+    public class GetMovieInfo
         {
-            [JsonPropertyName("results")]
-            public IEnumerable<Summary> Summaries { get; set; }
-        }
-
-        public async Task<IEnumerable<Summary>> GetMovieInfo(string query)
+        public static void Main(string[] args)
         {
-            List<Info> info = new List<Info>();
+            string movieName = Console.ReadLine();
 
-            var url = $"https://api.themoviedb.org/3/movie/550?api_key=d6bfcd253942f1907271911a59cbbe44";
-            var parameters = $"?query"
-
-            HttpClient Client = new();
-            Client.BaseAddress = new Uri(url);
-            Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            HttpResponseMessage response = await Client.GetAsync(parameters).ConfigureAwait(false);
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://api.themoviedb.org/3/movie/550?api_key=d6bfcd253942f1907271911a59cbbe44&query=" + WebUtility.UrlEncode(movieName));
+            var response = client.Send(request);
 
             if (response.IsSuccessStatusCode)
             {
-                var jsonString = await response.Content.ReadAsStringAsync();
-            }
+                string body = response.Content.ReadAsStringAsync().Result;
+                MovieInfo movieInfo = JsonSerializer.Deserialize<MovieInfo>(body);
 
+                if (movieInfo != null && movieInfo.Results != null && movieInfo.Results.Length > 0)
+                {
+                    Console.WriteLine("Best Match:");
+                    Console.WriteLine($"\t{ movieInfo.Results[0].Tagline}");
+                    Console.WriteLine($"\t{ movieInfo.Results[0].Overview}");
+                    Console.WriteLine($"\t{ movieInfo.Results[0].Original_language}");
+                }
+
+                else
+                {
+                    Console.WriteLine("No Match Found!");
+                }
+            }
         }
-    }
+    }  
 }
