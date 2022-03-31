@@ -52,16 +52,30 @@ namespace CL_Project
                     case "5":
                         repeat = true;
                         Console.Clear();
+                        Console.WriteLine("What Movie Do You Want To Remove From Your Completed List?");
+                        movie.RemoveFilm(completeList);
+                        break;
+                    case "6":
+                        repeat = true;
+                        Console.Clear();
                         Console.WriteLine("Here is Your Completed List!");
                         movie.ViewFilm(completeList);
                         break;
-                    case "6":
+                    case "7":
                         repeat = true;
                         Console.Clear();
                         Console.WriteLine("Here Is A Movie To Watch!");
                         movie.WhatToWatch(watchList);
                         break;
-                    case "7":
+                    case "8":
+                        repeat = true;
+                        Console.Clear();
+                        Console.WriteLine("What Movie Do You Want More Information About?");
+                        string movieName = Console.ReadLine();
+                        GetMovieInfo.Main(movieName);
+                        break;
+
+                    case "9":
                         repeat = false;
                         break;
                 }
@@ -83,9 +97,10 @@ namespace CL_Project
             menu.Add(new KeyValuePair<int, string>(2, "Remove Movie from Watch List"));
             menu.Add(new KeyValuePair<int, string>(3, "View My Watch List"));
             menu.Add(new KeyValuePair<int, string>(4, "Add Movie to Completed List"));
-            menu.Add(new KeyValuePair<int, string>(5, "View My Completed List"));
-            menu.Add(new KeyValuePair<int, string>(6, "What Should I Watch?"));
-            menu.Add(new KeyValuePair<int, string>(7, "All Done!"));
+            menu.Add(new KeyValuePair<int, string>(5, "Remove Movie From Completed List"));
+            menu.Add(new KeyValuePair<int, string>(6, "View My Completed List"));
+            menu.Add(new KeyValuePair<int, string>(7, "What Should I Watch?"));
+            menu.Add(new KeyValuePair<int, string>(9, "All Done!"));
 
             foreach (KeyValuePair<int, string> kvp in menu)
             {
