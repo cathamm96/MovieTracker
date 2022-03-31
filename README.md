@@ -8,13 +8,13 @@ Movie Tracker is a console application for users to keep track of both the movie
 
 DISPLAY MENU: The Display Menu Function displays a Key Value Pair menu with seven options for the user. There is a Console.Clear line at the beginning to keep the app organized and not overwhelming to anyone cycling through multiple options.
 
-ADD FILM: This references WriteJSON to allow users to add films to their lists. Depending on the file name referenced in the function, the film will either be added to WatchList.json (menu option 1), or CompletedList.json (menu option 4).
+ADD FILM: This references WriteJSON to allow users to add films to their lists. Depending on the file name referenced in the method, the film will either be added to WatchList.json (menu option 1), or CompletedList.json (menu option 4).
 
 REMOVE FILM: The Remove Film option is only applicable to WatchList.json and enables the user to remove a film from their Watch List after seeing the movie, or deciding not to see it. 
 
-VIEW FILM: Like the Add Film function, this applies to both the Watch List and Completed List. It references WatchList.json in menu option 3 to display the Watch List to the user and references CompletedList.json in menu Option 5 to display that list.
+VIEW FILM: Like the Add Film method, this applies to both the Watch List and Completed List. It references WatchList.json in menu option 3 to display the Watch List to the user and references CompletedList.json in menu Option 5 to display that list.
 
-WHAT TO WATCH: This acts in a unique way to the other functions. If the user wants to watch a movie, but cannot decide what to watch, this function will read WatchList.json, then generate a random number between 1 and the number of items in the Watch List, and will then return one movie for the user to watch.
+WHAT TO WATCH: This acts in a unique way to the other methods. If the user wants to watch a movie, but cannot decide what to watch, this method will read WatchList.json, then generate a random number between 1 and the number of items in the Watch List, and will then return one movie for the user to watch.
 
 WRITEJSON: This function will add the user input of a movie title to a list and then serialize it into one of the JSON files depending on the menu option selected.
 
@@ -24,7 +24,11 @@ READ JSON: This function will deserialize the JSON file referenced in the menu o
 
 <b>CLASS / OBJECT</b>
 
-FILES: The Files class contains the relevant code for the WriteJSON, RemoveJSON, and ReadJSON functions. 
+FILES CLASS: The Files class contains the relevant code for the WriteJSON, RemoveJSON, and ReadJSON functions. 
+
+MOVIES CLASS:
+
+MOVIE OBJECT:
 
 <b>FEATURES</b>
 
