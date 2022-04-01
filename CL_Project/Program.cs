@@ -72,8 +72,12 @@ namespace CL_Project
                         Console.Clear();
                         Console.WriteLine("What Movie Do You Want More Information About?");
                         string movieName = Console.ReadLine();
-                        MovieInfo movieInfo = MovieInfo.GetMovieInfo(movieName);
-
+                        MovieInfo movieInfo = MovieUtility.GetMovieInfo(movieName);
+                        Console.WriteLine("\n" + movieInfo.title);
+                        Console.WriteLine("\n" + movieInfo.release_date);
+                        Console.WriteLine("\n" + movieInfo.overview);
+                        Console.WriteLine("\nPress Any Key To Continue!");
+                        Console.ReadKey();
                         break;
                     case "9":
                         repeat = false;

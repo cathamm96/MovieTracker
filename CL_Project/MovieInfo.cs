@@ -9,34 +9,10 @@ namespace CL_Project
     {
         //API Key: d6bfcd253942f1907271911a59cbbe44
         //API Request URL: https://api.themoviedb.org/3/movie/550?api_key=d6bfcd253942f1907271911a59cbbe44
+        //https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
 
-        public class MovieInfoResult
-        {
-            public string Tagline { get; set; }
-            public string Overview { get; set; }
-            public string Original_language { get; set; }
-        }
-
-        public MovieInfoResult[] Results { get; set; }
-
-
-        public static MovieInfo GetMovieInfo(string movieName)
-        {
-            MovieInfo movieInfo = null;
-
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Get, "https://api.themoviedb.org/3/movie/550?api_key=d6bfcd253942f1907271911a59cbbe44&query=" + WebUtility.UrlEncode(movieName));
-            var response = client.Send(request);
-
-            if (response.IsSuccessStatusCode)
-            {
-                string body = response.Content.ReadAsStringAsync().Result;
-                JsonSerializer.Deserialize<MovieInfo>(body);
-                movieInfo = JsonSerializer.Deserialize<MovieInfo>(body);
-            }
-
-            return movieInfo;
-
-        }
+        public string title { get; set; }
+        public string release_date { get; set; }
+        public string overview { get; set; }
     }
 }
