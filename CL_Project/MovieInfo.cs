@@ -18,13 +18,11 @@ namespace CL_Project
         }
 
         public MovieInfoResult[] Results { get; set; }
-    }
 
-    public class GetMovieInfo
+
+        public static MovieInfo GetMovieInfo(string movieName)
         {
-        public static void Main(string[] args)
-        {
-            string movieName = Console.ReadLine();
+            MovieInfo movieInfo = null;
 
             var client = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Get, "https://api.themoviedb.org/3/movie/550?api_key=d6bfcd253942f1907271911a59cbbe44&query=" + WebUtility.UrlEncode(movieName));
@@ -33,21 +31,12 @@ namespace CL_Project
             if (response.IsSuccessStatusCode)
             {
                 string body = response.Content.ReadAsStringAsync().Result;
-                MovieInfo movieInfo = JsonSerializer.Deserialize<MovieInfo>(body);
-
-                if (movieInfo != null && movieInfo.Results != null && movieInfo.Results.Length > 0)
-                {
-                    Console.WriteLine("Best Match:");
-                    Console.WriteLine($"\t{ movieInfo.Results[0].Tagline}");
-                    Console.WriteLine($"\t{ movieInfo.Results[0].Overview}");
-                    Console.WriteLine($"\t{ movieInfo.Results[0].Original_language}");
-                }
-
-                else
-                {
-                    Console.WriteLine("No Match Found!");
-                }
+                JsonSerializer.Deserialize<MovieInfo>(body);
+                movieInfo = JsonSerializer.Deserialize<MovieInfo>(body);
             }
+
+            return movieInfo;
+
         }
-    }  
+    }
 }

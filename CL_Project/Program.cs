@@ -72,7 +72,8 @@ namespace CL_Project
                         Console.Clear();
                         Console.WriteLine("What Movie Do You Want More Information About?");
                         string movieName = Console.ReadLine();
-                        GetMovieInfo.Main(movieName);
+                        MovieInfo movieInfo = MovieInfo.GetMovieInfo(movieName);
+
                         break;
                     case "9":
                         repeat = false;
@@ -99,6 +100,7 @@ namespace CL_Project
             menu.Add(new KeyValuePair<int, string>(5, "Remove Movie From Completed List"));
             menu.Add(new KeyValuePair<int, string>(6, "View My Completed List"));
             menu.Add(new KeyValuePair<int, string>(7, "What Should I Watch?"));
+            menu.Add(new KeyValuePair<int, string>(8, "Get Information About A Movie"));
             menu.Add(new KeyValuePair<int, string>(9, "All Done!"));
 
             foreach (KeyValuePair<int, string> kvp in menu)
