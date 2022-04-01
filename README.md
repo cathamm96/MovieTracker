@@ -34,7 +34,7 @@ Movie Tracker is a console application for users to keep track of both the movie
 
 <i>MOVIE OBJECT:</i> Created from Movies class to call the methods within the Display Menu.
 
-<i>MOVIEINFO / GETMOVIEINFO CLASSES:</i>
+<i>MOVIEINFO / GETMOVIEINFO CLASSES:</i> Used for calling the Movie Database API and extracting specific information about a movie from the user's input.
 
 
 <b>FEATURES</b>
@@ -47,4 +47,4 @@ Movie Tracker is a console application for users to keep track of both the movie
 
 <i>JSON FILES:</i> Movie Tracker has options to write to two separate JSON files, remove items from one of those files, and options to view each of the files. The JSON files are read in order to view both the Watch List and Completed List, and the Watch List is also read in Option 7 before a random item from it is selected and returned to the user.
 
-<i>WEB API:</i>
+<i>WEB API:</i> Menu Option 8 uses The Movie Database API to return the tagline, overview, and original language of a movie title entered by the app user, so they can use that information to decide if the movie will go on their Watch List.
