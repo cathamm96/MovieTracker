@@ -34,8 +34,9 @@ Movie Tracker is a console application for users to keep track of both the movie
 
 <i>MOVIE OBJECT:</i> Created from Movies class to call the methods within the Display Menu.
 
-<i>MOVIEINFO / GETMOVIEINFO CLASSES:</i> Used for calling the Movie Database API and extracting specific information about a movie from the user's input.
+<i>MOVIEINFO / MOVIEUTILITY CLASSES:</i> Used for calling the Movie Database API and extracting specific information about a movie from the user's input.
 
+<i>MOVIE INFO OBJECT:</i> Created from MovieUtility Class to call the method in Option 8 of the Display Menu.
 
 <b>FEATURES</b>
 
